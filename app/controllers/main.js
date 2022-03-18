@@ -21,7 +21,7 @@ function hienThiTable(mangSP) {
         <td>${e.tenSP}</td>
         <td>${e.gia}</td>
         <td style="text-align: center;"><img src="${e.hinhAnh}" style="width: 70px; height: 70px" alt=""></td>
-        <td>${e.moTa}</td>
+        <td>${e.daBan}</td>
         <td style="text-align: center;">
           <button class="btn btn-danger" onclick="delProduct(${e.id})" >Xóa</button>
           <button class="btn btn-info" onclick="showDetails(${e.id})" data-toggle="modal" data-target="#myModal">Xem</button>
@@ -64,7 +64,7 @@ function delProduct(id) {
 function showDetails(id){
   services.getProduct(id)
   .then(function(result){
-    showForm(result.data.tenSP,result.data.gia,result.data.hinhAnh,result.data.moTa);
+    showForm(result.data.tenSP,result.data.gia,result.data.hinhAnh,result.data.daBan);
     document.querySelector("#myModal .modal-footer").innerHTML = `
         <button onclick="updateProduct(${result.data.id})" type="button" class="btn btn-success" id="capnhatSP">
         Cập nhật sản phẩm

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 </head>
+
 <body>
   <div class="container">
     <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
@@ -112,16 +113,42 @@
               <input id="TenSP" class="form-control" placeholder="Nhập vào tên sản phẩm" />
             </div>
             <div class="form-group">
+              <label>Tên Hãng</label>
+              <input id="hangSP" class="form-control" placeholder="Nhập vào tên hãng" />
+            </div>
+            <div class="form-group">
+              <label>Loại sản phẩm</label>
+              <input id="loaiSP" class="form-control" placeholder="Nhập vào tên loại hàng" />
+            </div>
+            <div class=" form-group">
               <label>Giá</label>
               <input id="GiaSP" class="form-control" placeholder="Nhập vào giá" />
             </div>
             <div class="form-group">
-              <label>Hình Ảnh</label>
-              <input id="HinhSP" class="form-control" placeholder="Nhập vào hình sản phẩm" />
+              <label>Đánh giá</label>
+              <input id="rateSP" class="form-control" placeholder="Nhập vào hình sản phẩm" />
             </div>
             <div class="form-group">
-              <label>Mô tả</label>
-              <input id="MotaSP" class="form-control" placeholder="Nhập vào mô tả sản phẩm" />
+              <label>Hình Ảnh</label>
+              <input id="hinhSP" class="form-control" placeholder="Nhập vào hình sản phẩm" />
+            </div>
+            <div class="form-group">
+              <label>Kho hàng</label>
+              <input id="khoSP" class="form-control" placeholder="Nhập vào mô tả sản phẩm" />
+            </div>
+            <div class="form-group">
+              <label>Khuyến mãi</label>
+              <input id="kmSP" type="number" class="form-control" placeholder="Nhập vào khuyến mãi" />
+            </div>
+            <div class="form-group">
+              <label for="">Shipping</label>
+              <select class="form-control member-form" id="freeShip">
+                <option value="none" selected="" disabled="">
+                  Chọn Freeship
+                </option>
+                <option value="true">Freeship</option>
+                <option value="false">No Freeship</option>
+              </select>
             </div>
           </div>
           <!-- Modal footer -->
@@ -149,4 +176,5 @@
   <script src="../models/products.js"></script>
   <script src="../controllers/main.js"></script>
 </body>
+
 </html>

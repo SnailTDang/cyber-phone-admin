@@ -18,13 +18,13 @@ function hienThiTable(mangSP) {
     return `
       <tr>
         <td>${count++}</td>
-        <td>${e.tenSP}</td>
-        <td>${e.gia}</td>
-        <td style="text-align: center;"><img src="${e.hinhAnh}" style="width: 70px; height: 70px" alt=""></td>
-        <td>${e.daBan}</td>
+        <td>${e.name}</td>
+        <td>${e.cost}</td>
+        <td style="text-align: center;"><img src="${e.image}" style="width: 70px; height: 70px" alt=""></td>
+        <td>${e.amount}</td>
         <td style="text-align: center;">
-          <button class="btn btn-danger" onclick="delProduct(${e.id})" >Xóa</button>
-          <button class="btn btn-info" onclick="showDetails(${e.id})" data-toggle="modal" data-target="#myModal">Xem</button>
+          <button class="btn btn-danger" onclick="delProduct('${e.id}')" >Xóa</button>
+          <button class="btn btn-info" onclick="showDetails('${e.id}')" data-toggle="modal" data-target="#myModal">Xem</button>
         </td>
       </tr>
     `
@@ -35,10 +35,15 @@ function hienThiTable(mangSP) {
 function addProducts () {
   var ten = document.getElementById("TenSP").value;
   var gia = document.getElementById("GiaSP").value;
-  var hinhAnh = document.getElementById("HinhSP").value;
-  var moTa = document.getElementById("MotaSP").value;
+  var hinhAnh = document.getElementById("hinhSP").value;
+  var soLuong = document.getElementById("khoSP").value;
+  var danhGia = document.getElementById("rateSP").value;
+  var khuyenMai = document.getElementById("kmSP").value;
+  var freesShip = document.getElementById("freeShip").value;
+  var hang = document.getElementById("hangSP").value;
+  var loai = document.getElementById("loaiSP").value;
   
-  var product = new Products(ten, gia, hinhAnh, moTa)
+  var product = new Products(ten, hang, loai, gia, hinhAnh, soLuong, danhGia, khuyenMai, freesShip);
   console.log(product)
   services.addProduct(product)
   .then(function(result){
@@ -64,7 +69,9 @@ function delProduct(id) {
 function showDetails(id){
   services.getProduct(id)
   .then(function(result){
-    showForm(result.data.tenSP,result.data.gia,result.data.hinhAnh,result.data.daBan);
+    let {id, name, cost, image, amount, rate, discount, freeship, type, brand} = result.data;
+    // freeShip = freeShip.toString();
+    showForm(name, cost, image, amount, rate, discount, freeship, brand,type);
     document.querySelector("#myModal .modal-footer").innerHTML = `
         <button onclick="updateProduct(${result.data.id})" type="button" class="btn btn-success" id="capnhatSP">
         Cập nhật sản phẩm
@@ -78,11 +85,16 @@ function showDetails(id){
 }
 
 function updateProduct(id){
-    var ten = document.getElementById("TenSP").value;
-    var gia = document.getElementById("GiaSP").value;
-    var hinhAnh = document.getElementById("HinhSP").value;
-    var moTa = document.getElementById("MotaSP").value;
-    var product = new Products(ten, gia, hinhAnh, moTa);
+  var ten = document.getElementById("TenSP").value;
+  var gia = document.getElementById("GiaSP").value;
+  var hinhAnh = document.getElementById("hinhSP").value;
+  var soLuong = document.getElementById("khoSP").value;
+  var danhGia = document.getElementById("rateSP").value;
+  var khuyenMai = document.getElementById("kmSP").value;
+  var freesShip = document.getElementById("freeShip").value;
+  var hang = document.getElementById("hangSP").value;
+  var product = new Products(ten, gia, hinhAnh, soLuong,danhGia,khuyenMai,freesShip,hang)
+  
   services.updateProduct(id,product)
   .then(function(result){
     layDS();
@@ -94,11 +106,17 @@ function updateProduct(id){
 }
 
 
-function showForm(tenSP,giaSP,HinhSP,MotaSP){
+function showForm(tenSP,giaSP,hinhSP,khoSP,rateSP,kmSP,freeShip,hangSP,loaiSP){
   document.getElementById("TenSP").value = tenSP;
   document.getElementById("GiaSP").value = giaSP;
-  document.getElementById("HinhSP").value = HinhSP;
-  document.getElementById("MotaSP").value = MotaSP;
+  document.getElementById("hinhSP").value = hinhSP;
+  document.getElementById("khoSP").value = khoSP;
+  document.getElementById("rateSP").value = rateSP;
+  document.getElementById("kmSP").value = kmSP;
+  document.getElementById("freeShip").value = freeShip.toString();
+  document.getElementById("hangSP").value = hangSP;
+  document.getElementById("loaiSP").value = loaiSP;
+  console.log(freeShip)
 }
 
 document.getElementById("btnThemSP").addEventListener("click", function (){
@@ -107,5 +125,6 @@ document.getElementById("btnThemSP").addEventListener("click", function (){
         Thêm sản phẩm
         </button>
   `;
-  showForm("","","","");
+  let none = "";
+  showForm(none,none,none,none,none,none,none,none,none);
 })

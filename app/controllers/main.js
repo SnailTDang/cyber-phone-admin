@@ -37,11 +37,18 @@ function addProducts () {
   var gia = Number(document.getElementById("GiaSP").value);
   var hinhAnh = document.getElementById("hinhSP").value;
   var soLuong = document.getElementById("khoSP").value;
-  var danhGia = document.getElementById("rateSP").value;
+  var rateELE = document.querySelectorAll(".rate-input");
   var khuyenMai = document.getElementById("kmSP").value;
   var freesShip = Boolean(Number(document.getElementById("freeShip").value));
   var hang = document.getElementById("hangSP").value;
   var loai = document.getElementById("loaiSP").value;
+  let danhGia = {};
+  
+  for(let rate of rateELE) {
+    let idName = rate.id;
+    let value = rate.value;
+    danhGia = {...danhGia,[idName]:value}
+  }
   
   var product = new Products(ten, hang, loai, gia, hinhAnh, soLuong, danhGia, khuyenMai, freesShip);
   console.log(product)
@@ -72,7 +79,7 @@ function showDetails(id){
     let {id, name,brand, type, cost, image, amount, rate, discount, freeShip} = result.data;
     console.log({id, name,brand, type, cost, image, amount, rate, discount, freeShip})
     // freeShip = freeShip.toString();
-    showForm(name, cost, image, amount, rate, discount, freeShip, brand, type);
+    showForm(name, cost, image, amount, rate.star, rate.comments, discount, freeShip, brand, type);
     document.querySelector("#myModal .modal-footer").innerHTML = `
         <button onclick="updateProduct(${result.data.id})" type="button" class="btn btn-success" id="capnhatSP">
         Cập nhật sản phẩm
@@ -90,11 +97,20 @@ function updateProduct(id){
   var gia = Number(document.getElementById("GiaSP").value);
   var hinhAnh = document.getElementById("hinhSP").value;
   var soLuong = document.getElementById("khoSP").value;
-  var danhGia = document.getElementById("rateSP").value;
+  var rateELE = document.querySelectorAll(".rate-input");
   var khuyenMai = document.getElementById("kmSP").value;
-  var freesShip = document.getElementById("freeShip").value;
+  var freesShip = Boolean(Number(document.getElementById("freeShip").value));
   var hang = document.getElementById("hangSP").value;
-  var product = new Products(ten, gia, hinhAnh, soLuong,danhGia,khuyenMai,freesShip,hang)
+  var loai = document.getElementById("loaiSP").value;
+  let danhGia = {};
+  
+  for(let rate of rateELE) {
+    let idName = rate.id;
+    let value = rate.value;
+    danhGia = {...danhGia,[idName]:value}
+  }
+  
+  var product = new Products(ten, hang, loai, gia, hinhAnh, soLuong, danhGia, khuyenMai, freesShip);
   
   services.updateProduct(id,product)
   .then(function(result){
@@ -107,12 +123,13 @@ function updateProduct(id){
 }
 
 
-function showForm(tenSP,giaSP,hinhSP,khoSP,rateSP,kmSP,freeShip,hangSP,loaiSP){
+function showForm(tenSP,giaSP,hinhSP,khoSP,star,comments,kmSP,freeShip,hangSP,loaiSP){
   document.getElementById("TenSP").value = tenSP;
   document.getElementById("GiaSP").value = giaSP;
   document.getElementById("hinhSP").value = hinhSP;
   document.getElementById("khoSP").value = khoSP;
-  document.getElementById("rateSP").value = rateSP;
+  document.getElementById("star").value = star;
+  document.getElementById("comments").value = comments;
   document.getElementById("kmSP").value = kmSP;
   document.getElementById("freeShip").value = freeShip.toString();
   document.getElementById("hangSP").value = hangSP;

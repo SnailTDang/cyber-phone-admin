@@ -79,6 +79,7 @@ function showDetails(id){
   services.getProduct(id)
   .then(function(result){
     let {id, name,brand, type, cost, image, amount, rate, discount, freeShip} = result.data;
+    freeShip = freeShip === true ? 1 : 0 ;
     showForm(name, cost, image, amount, rate.star, rate.comments, discount, freeShip, brand, type);
     document.querySelector("#myModal .modal-footer").innerHTML = `
         <button onclick="updateProduct('${result.data.id}')" type="button" class="btn btn-success" id="capnhatSP">

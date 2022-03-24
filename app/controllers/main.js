@@ -40,11 +40,11 @@ function addProducts () {
   var soLuong = document.getElementById("khoSP").value;
   var rateELE = document.querySelectorAll(".rate-input");
   var khuyenMai = document.getElementById("kmSP").value;
-  var freesShip = Boolean(Number(document.getElementById("freeShip").value));
+  var freeship = Boolean(Number(document.getElementById("freeShip").value));
   var hang = document.getElementById("hangSP").value;
   var loai = document.getElementById("loaiSP").value;
   let danhGia = {};
-  console.log(freesShip);
+  console.log(freeship);
   
   for(let rate of rateELE) {
     let idName = rate.id;
@@ -52,7 +52,7 @@ function addProducts () {
     danhGia = {...danhGia,[idName]:value}
   }
   
-  var product = new Products(ten, hang, loai, gia, hinhAnh, soLuong, danhGia, khuyenMai, freesShip);
+  var product = new Products(ten, hang, loai, gia, hinhAnh, soLuong, danhGia, khuyenMai, freeship);
   console.log(product)
   services.addProduct(product)
   .then(function(result){
@@ -78,9 +78,10 @@ function delProduct(id) {
 function showDetails(id){
   services.getProduct(id)
   .then(function(result){
-    let {id, name,brand, type, cost, image, amount, rate, discount, freeShip} = result.data;
-    freeShip = freeShip === true ? 1 : 0 ;
-    showForm(name, cost, image, amount, rate.star, rate.comments, discount, freeShip, brand, type);
+    let {name,brand, type, cost, image, amount, rate, discount, freeship} = result.data;
+    console.log(freeship)
+    freeship = freeship === true ? 1 : 0;
+    showForm(name, cost, image, amount, rate.star, rate.comments, discount, freeship, brand, type);
     document.querySelector("#myModal .modal-footer").innerHTML = `
         <button onclick="updateProduct('${result.data.id}')" type="button" class="btn btn-success" id="capnhatSP">
         Cập nhật sản phẩm
@@ -100,7 +101,7 @@ function updateProduct(id){
   var soLuong = document.getElementById("khoSP").value;
   var rateELE = document.querySelectorAll(".rate-input");
   var khuyenMai = document.getElementById("kmSP").value;
-  var freesShip = Boolean(Number(document.getElementById("freeShip").value));
+  var freeship = Boolean(Number(document.getElementById("freeShip").value));
   var hang = document.getElementById("hangSP").value;
   var loai = document.getElementById("loaiSP").value;
   let danhGia = {};
@@ -111,7 +112,7 @@ function updateProduct(id){
     danhGia = {...danhGia,[idName]:value}
   }
   
-  var product = new Products(ten, hang, loai, gia, hinhAnh, soLuong, danhGia, khuyenMai, freesShip);
+  var product = new Products(ten, hang, loai, gia, hinhAnh, soLuong, danhGia, khuyenMai, freeship);
   console.log(product)
   
   services.updateProduct(id,product)

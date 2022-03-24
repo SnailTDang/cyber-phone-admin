@@ -8,6 +8,6 @@ class Products {
         this.amount = amount;
         this.rate = rate;
         this.discount = discount;
-        this.freeShip = freeShip;
+        this.freeship = freeShip;
     }
 }

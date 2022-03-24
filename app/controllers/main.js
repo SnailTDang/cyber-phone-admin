@@ -43,10 +43,11 @@ function addProducts () {
   var hang = document.getElementById("hangSP").value;
   var loai = document.getElementById("loaiSP").value;
   let danhGia = {};
+  console.log(freesShip);
   
   for(let rate of rateELE) {
     let idName = rate.id;
-    let value = rate.value;
+    let value = Number(rate.value);
     danhGia = {...danhGia,[idName]:value}
   }
   
@@ -77,8 +78,7 @@ function showDetails(id){
   services.getProduct(id)
   .then(function(result){
     let {id, name,brand, type, cost, image, amount, rate, discount, freeShip} = result.data;
-    console.log({id, name,brand, type, cost, image, amount, rate, discount, freeShip})
-    // freeShip = freeShip.toString();
+    console.log(freeShip)
     showForm(name, cost, image, amount, rate.star, rate.comments, discount, freeShip, brand, type);
     document.querySelector("#myModal .modal-footer").innerHTML = `
         <button onclick="updateProduct(${result.data.id})" type="button" class="btn btn-success" id="capnhatSP">
@@ -106,7 +106,7 @@ function updateProduct(id){
   
   for(let rate of rateELE) {
     let idName = rate.id;
-    let value = rate.value;
+    let value = Number(rate.value);
     danhGia = {...danhGia,[idName]:value}
   }
   
@@ -131,7 +131,7 @@ function showForm(tenSP,giaSP,hinhSP,khoSP,star,comments,kmSP,freeShip,hangSP,lo
   document.getElementById("star").value = star;
   document.getElementById("comments").value = comments;
   document.getElementById("kmSP").value = kmSP;
-  document.getElementById("freeShip").value = freeShip.toString();
+  document.getElementById("freeShip").value = freeShip;
   document.getElementById("hangSP").value = hangSP;
   document.getElementById("loaiSP").value = loaiSP;
 }

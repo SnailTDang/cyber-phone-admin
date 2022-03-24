@@ -34,12 +34,12 @@ function hienThiTable(mangSP) {
 
 function addProducts () {
   var ten = document.getElementById("TenSP").value;
-  var gia = document.getElementById("GiaSP").value;
+  var gia = Number(document.getElementById("GiaSP").value);
   var hinhAnh = document.getElementById("hinhSP").value;
   var soLuong = document.getElementById("khoSP").value;
   var danhGia = document.getElementById("rateSP").value;
   var khuyenMai = document.getElementById("kmSP").value;
-  var freesShip = document.getElementById("freeShip").value;
+  var freesShip = Boolean(Number(document.getElementById("freeShip").value));
   var hang = document.getElementById("hangSP").value;
   var loai = document.getElementById("loaiSP").value;
   
@@ -69,9 +69,10 @@ function delProduct(id) {
 function showDetails(id){
   services.getProduct(id)
   .then(function(result){
-    let {id, name, cost, image, amount, rate, discount, freeship, type, brand} = result.data;
+    let {id, name,brand, type, cost, image, amount, rate, discount, freeShip} = result.data;
+    console.log({id, name,brand, type, cost, image, amount, rate, discount, freeShip})
     // freeShip = freeShip.toString();
-    showForm(name, cost, image, amount, rate, discount, freeship, brand,type);
+    showForm(name, cost, image, amount, rate, discount, freeShip, brand, type);
     document.querySelector("#myModal .modal-footer").innerHTML = `
         <button onclick="updateProduct(${result.data.id})" type="button" class="btn btn-success" id="capnhatSP">
         Cập nhật sản phẩm
@@ -86,7 +87,7 @@ function showDetails(id){
 
 function updateProduct(id){
   var ten = document.getElementById("TenSP").value;
-  var gia = document.getElementById("GiaSP").value;
+  var gia = Number(document.getElementById("GiaSP").value);
   var hinhAnh = document.getElementById("hinhSP").value;
   var soLuong = document.getElementById("khoSP").value;
   var danhGia = document.getElementById("rateSP").value;
@@ -116,7 +117,6 @@ function showForm(tenSP,giaSP,hinhSP,khoSP,rateSP,kmSP,freeShip,hangSP,loaiSP){
   document.getElementById("freeShip").value = freeShip.toString();
   document.getElementById("hangSP").value = hangSP;
   document.getElementById("loaiSP").value = loaiSP;
-  console.log(freeShip)
 }
 
 document.getElementById("btnThemSP").addEventListener("click", function (){

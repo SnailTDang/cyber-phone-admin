@@ -12,6 +12,7 @@ function layDS() {
 
 layDS();
 
+
 function hienThiTable(mangSP) {
   let count = 1;
   let content = mangSP.map((e) => {
@@ -19,8 +20,8 @@ function hienThiTable(mangSP) {
       <tr>
         <td>${count++}</td>
         <td>${e.name}</td>
-        <td>${e.cost}</td>
-        <td style="text-align: center;"><img src="${e.image}" style="width: 70px; height: 70px" alt=""></td>
+        <td>${Number(e.cost).toLocaleString()}₫</td>
+        <td style="text-align: center;"><img src="${e.image}" style="width: 70px; height: 70px; object-fit: contain;" alt=""></td>
         <td>${e.amount}</td>
         <td style="text-align: center;">
           <button class="btn btn-danger" onclick="delProduct('${e.id}')" >Xóa</button>
@@ -78,10 +79,9 @@ function showDetails(id){
   services.getProduct(id)
   .then(function(result){
     let {id, name,brand, type, cost, image, amount, rate, discount, freeShip} = result.data;
-    console.log(freeShip)
     showForm(name, cost, image, amount, rate.star, rate.comments, discount, freeShip, brand, type);
     document.querySelector("#myModal .modal-footer").innerHTML = `
-        <button onclick="updateProduct(${result.data.id})" type="button" class="btn btn-success" id="capnhatSP">
+        <button onclick="updateProduct('${result.data.id}')" type="button" class="btn btn-success" id="capnhatSP">
         Cập nhật sản phẩm
         </button>
   `;
@@ -111,6 +111,7 @@ function updateProduct(id){
   }
   
   var product = new Products(ten, hang, loai, gia, hinhAnh, soLuong, danhGia, khuyenMai, freesShip);
+  console.log(product)
   
   services.updateProduct(id,product)
   .then(function(result){

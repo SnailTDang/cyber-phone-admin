@@ -223,7 +223,6 @@ let searchMember = () => {
             let indexFind = name.indexOf(findLower);
             if (indexFind > -1) {
                 findArr.push(e);
-                console.log(findArr);
             }
         });
         if (findArr.length) {
@@ -237,6 +236,6 @@ let searchMember = () => {
     }
 };
 
-inputSearch.addEventListener("change", () => {
+inputSearch.addEventListener("keyup", () => {
     searchMember();
 });

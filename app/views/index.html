@@ -155,99 +155,101 @@
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <div class="form-group">
-                                <label>Tên Sản Phẩm</label>
-                                <input
-                                    id="TenSP"
-                                    class="form-control"
-                                    placeholder="Nhập vào tên sản phẩm"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label>Tên Hãng</label>
-                                <input
-                                    id="hangSP"
-                                    class="form-control"
-                                    placeholder="Nhập vào tên hãng"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label>Loại sản phẩm</label>
-                                <input
-                                    id="loaiSP"
-                                    class="form-control"
-                                    placeholder="Nhập vào tên loại hàng"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label>Giá</label>
-                                <input
-                                    id="GiaSP"
-                                    class="form-control"
-                                    placeholder="Nhập vào giá"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label>Đánh giá</label>
+                            <form action="" id="myForm">
                                 <div class="form-group">
-                                    <label>Số sao</label>
+                                    <label>Tên Sản Phẩm</label>
                                     <input
-                                        id="star"
-                                        class="form-control rate-input"
-                                        placeholder="Nhập vào số sao"
+                                        id="TenSP"
+                                        class="form-control"
+                                        placeholder="Nhập vào tên sản phẩm"
                                     />
                                 </div>
                                 <div class="form-group">
-                                    <label>Số bình luận</label>
+                                    <label>Tên Hãng</label>
                                     <input
-                                        id="comments"
-                                        class="form-control rate-input"
-                                        placeholder="Nhập vào số bình luận"
+                                        id="hangSP"
+                                        class="form-control"
+                                        placeholder="Nhập vào tên hãng"
                                     />
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Hình Ảnh</label>
-                                <input
-                                    id="hinhSP"
-                                    class="form-control"
-                                    placeholder="Nhập vào hình sản phẩm"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label>Kho hàng</label>
-                                <input
-                                    id="khoSP"
-                                    class="form-control"
-                                    placeholder="Nhập vào mô tả sản phẩm"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label>Khuyến mãi</label>
-                                <input
-                                    id="kmSP"
-                                    type="number"
-                                    class="form-control"
-                                    placeholder="Nhập vào khuyến mãi"
-                                />
-                            </div>
-                            <div class="form-group">
-                                <label for="">Shipping</label>
-                                <select
-                                    class="form-control member-form"
-                                    id="freeShip"
-                                >
-                                    <option
-                                        value="none"
-                                        selected=""
-                                        disabled=""
+                                <div class="form-group">
+                                    <label>Loại sản phẩm</label>
+                                    <input
+                                        id="loaiSP"
+                                        class="form-control"
+                                        placeholder="Nhập vào tên loại hàng"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label>Giá</label>
+                                    <input
+                                        id="GiaSP"
+                                        class="form-control"
+                                        placeholder="Nhập vào giá"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label>Đánh giá</label>
+                                    <div class="form-group">
+                                        <label>Số sao</label>
+                                        <input
+                                            id="star"
+                                            class="form-control rate-input"
+                                            placeholder="Nhập vào số sao"
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Số bình luận</label>
+                                        <input
+                                            id="comments"
+                                            class="form-control rate-input"
+                                            placeholder="Nhập vào số bình luận"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Hình Ảnh</label>
+                                    <input
+                                        id="hinhSP"
+                                        class="form-control"
+                                        placeholder="Nhập vào hình sản phẩm"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label>Kho hàng</label>
+                                    <input
+                                        id="khoSP"
+                                        class="form-control"
+                                        placeholder="Nhập vào mô tả sản phẩm"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label>Khuyến mãi</label>
+                                    <input
+                                        id="kmSP"
+                                        type="number"
+                                        class="form-control"
+                                        placeholder="Nhập vào khuyến mãi"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Shipping</label>
+                                    <select
+                                        class="form-control member-form"
+                                        id="freeShip"
                                     >
-                                        Chọn Freeship
-                                    </option>
-                                    <option value="1">Freeship</option>
-                                    <option value="0">No Freeship</option>
-                                </select>
-                            </div>
+                                        <option
+                                            value="none"
+                                            selected=""
+                                            disabled=""
+                                        >
+                                            Chọn Freeship
+                                        </option>
+                                        <option value="1">Freeship</option>
+                                        <option value="0">No Freeship</option>
+                                    </select>
+                                </div>
+                            </form>
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer"></div>

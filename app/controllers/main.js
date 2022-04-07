@@ -208,8 +208,7 @@ document.getElementById("btnThemSP").addEventListener("click", function () {
         Thêm sản phẩm
         </button>
   `;
-    let none = "";
-    showForm(none, none, none, none, none, none, none, none, none);
+    document.querySelector("#myForm").reset();
 });
 
 let inputSearch = document.querySelector("#searchInput");

@@ -217,15 +217,16 @@ let searchMember = () => {
     let textInput = inputSearch.value;
     if (textInput) {
         let findArr = [];
-        let findLower = textInput.toLowerCase();
+        let findLower = textInput.toLowerCase().trim();
         arrayProduct.map((e) => {
-            let name = e.name.toLowerCase();
+            let name = e.name.toLowerCase().trim().replace(/\s/g, "");
             let indexFind = name.indexOf(findLower);
             if (indexFind > -1) {
                 findArr.push(e);
+                console.log(findArr);
             }
         });
-        if (findArr.length > 1) {
+        if (findArr.length) {
             hienThiTable(findArr);
         } else {
             document.querySelector("#tblDanhSachSP").innerHTML =
@@ -236,6 +237,6 @@ let searchMember = () => {
     }
 };
 
-inputSearch.addEventListener("keyup", () => {
+inputSearch.addEventListener("change", () => {
     searchMember();
 });

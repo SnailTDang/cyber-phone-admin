@@ -4,32 +4,32 @@ function ProductsServices() {
     this.getProductList = function () {
         return axios({
             method: 'get',
-            url: 'http://localhost:3000/data',
+            url: 'https://6214ccb089fad53b1f1f676b.mockapi.io/Products',
         })
     }
     this.addProduct = function (products) {
         return axios({
             method: 'POST',
-            url: 'http://localhost:3000/data',
+            url: 'https://6214ccb089fad53b1f1f676b.mockapi.io/Products',
             data: products,
         });
     }
     this.deleteProduct = function (id) {
         return axios({
             method: 'DELETE',
-            url: `http://localhost:3000/data/${id}`,
+            url: `https://6214ccb089fad53b1f1f676b.mockapi.io/Products/${id}`,
         });
     }
     this.getProduct = function (id) {
         return axios({
             method: 'GET',
-            url: `http://localhost:3000/data/${id}`,
+            url: `https://6214ccb089fad53b1f1f676b.mockapi.io/Products/${id}`,
         });
     }
     this.updateProduct = function (id, product) {
         return axios({
             method: 'PUT',
-            url: `http://localhost:3000/data/${id}`,
+            url: `https://6214ccb089fad53b1f1f676b.mockapi.io/Products/${id}`,
             data: product
         });
     }
